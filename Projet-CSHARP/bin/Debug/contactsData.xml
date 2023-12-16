@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Folder>
+  <Name>Root</Name>
+  <CreationDate>16/12/2023 15:40:21</CreationDate>
+  <ModificationDate>16/12/2023 15:40:21</ModificationDate>
+  <SubFolders>
+    <Folder>
+      <Name>test2</Name>
+      <CreationDate>16/12/2023 15:40:58</CreationDate>
+      <ModificationDate>16/12/2023 15:40:58</ModificationDate>
+      <Contacts>
+        <Contact>
+          <LastName>K</LastName>
+          <FirstName>K</FirstName>
+          <Email>K</Email>
+          <Company>K</Company>
+          <Link>Relation</Link>
+          <CreationDate>16/12/2023 15:41:44</CreationDate>
+          <ModificationDate>16/12/2023 15:41:44</ModificationDate>
+        </Contact>
+      </Contacts>
+    </Folder>
+    <Folder>
+      <Name>react</Name>
+      <CreationDate>16/12/2023 15:41:13</CreationDate>
+      <ModificationDate>16/12/2023 15:41:13</ModificationDate>
+    </Folder>
+  </SubFolders>
+  <Contacts>
+    <Contact>
+      <LastName>E</LastName>
+      <FirstName>E</FirstName>
+      <Email>E</Email>
+      <Company>E</Company>
+      <Link>Friend</Link>
+      <CreationDate>16/12/2023 15:40:31</CreationDate>
+      <ModificationDate>16/12/2023 15:40:31</ModificationDate>
+    </Contact>
+    <Contact>
+      <LastName>T</LastName>
+      <FirstName>T</FirstName>
+      <Email>T</Email>
+      <Company>T</Company>
+      <Link>Network</Link>
+      <CreationDate>16/12/2023 15:41:22</CreationDate>
+      <ModificationDate>16/12/2023 15:41:22</ModificationDate>
+    </Contact>
+  </Contacts>
+</Folder>

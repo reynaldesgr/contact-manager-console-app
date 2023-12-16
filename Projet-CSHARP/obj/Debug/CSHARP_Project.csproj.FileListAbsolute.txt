@@ -1,0 +1,2 @@
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\obj\Debug\CSHARP_Project.csproj.AssemblyReference.cache
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\obj\Debug\CSHARP_Project.csproj.CoreCompileInputs.cache

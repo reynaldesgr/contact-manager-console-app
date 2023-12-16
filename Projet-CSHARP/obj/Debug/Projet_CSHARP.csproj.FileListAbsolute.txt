@@ -1,0 +1,7 @@
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\obj\Debug\Projet_CSHARP.csproj.CoreCompileInputs.cache
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\bin\Debug\Projet-CSHARP.exe.config
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\bin\Debug\Projet-CSHARP.exe
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\bin\Debug\Projet-CSHARP.pdb
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\obj\Debug\Projet-CSHARP.exe
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\obj\Debug\Projet-CSHARP.pdb
+C:\Users\reyna\OneDrive\Bureau\Projet_CSHARP\ContactManager\Projet-CSHARP\obj\Debug\Projet_CSHARP.csproj.AssemblyReference.cache
