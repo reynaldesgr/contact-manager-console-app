@@ -93,7 +93,7 @@ namespace Projet_CSHARP
             }
             else
             {
-                root = entityFactory.CreateFolder("Root");
+                root = entityFactory.CreateFolder("root");
                 current = root;
                 Console.WriteLine("No existing data. Created a new root folder.");
             }
@@ -101,7 +101,7 @@ namespace Projet_CSHARP
 
         public void UnloadData()
         {
-            root = entityFactory.CreateFolder("Root");
+            root = entityFactory.CreateFolder("root");
             current = root;
             Console.WriteLine("Data unloaded successfully.");
         }
@@ -136,15 +136,18 @@ namespace Projet_CSHARP
                 return folder;
             }
 
-            foreach (var subfolder in folder.SubFolders)
+            if (null != folder.SubFolders)
             {
-                var foundFolder = FindFolderByName(subfolder, folderName);
-                if (foundFolder != null)
+                foreach (var subfolder in folder.SubFolders)
                 {
-                    return foundFolder;
+                    var foundFolder = FindFolderByName(subfolder, folderName);
+                    if (foundFolder != null)
+                    {
+                        return foundFolder;
+                    }
                 }
-            }
 
+            }
             return null;
         }
     }

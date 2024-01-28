@@ -16,7 +16,8 @@ namespace Projet_CSHARP
                 Console.WriteLine("3. Create contact");
                 Console.WriteLine("4. Select current folder");
                 Console.WriteLine("5. Save data");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Unload data");
+                Console.WriteLine("7. Exit");
                 Console.Write("Enter your choice: ");
 
                 string choice = Console.ReadLine();
@@ -77,9 +78,27 @@ namespace Projet_CSHARP
                     case "5":
                         contactManager.SaveData();
                         break;
+
                     case "6":
+                        contactManager.UnloadData();
+                        Console.Write("Are you sure to unload data ? [Y/N] ");
+                        string answer = Console.ReadLine();
+                        switch(answer)
+                        {
+                            case "Y":
+                                contactManager.UnloadData();
+                                break;
+                            case "N":
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+
+                    case "7":
                         Environment.Exit(0);
                         break;
+
                     default:
                         Console.WriteLine("Invalid choice. Please enter a valid option.");
                         break;
