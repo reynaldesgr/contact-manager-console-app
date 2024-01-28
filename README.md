@@ -1,4 +1,4 @@
-# ``contact Manager - console Version (C#/.NET 8)``
+# ``contact Manager - console version (C#/.NET 8)``
 <img src="https://i.ibb.co/Ln86WhT/app-console-screen.png" alt="app-console-screen">
 
 ## ``Description``
