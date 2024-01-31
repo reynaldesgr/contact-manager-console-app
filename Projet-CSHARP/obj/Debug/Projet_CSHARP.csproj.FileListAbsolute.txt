@@ -12,3 +12,10 @@ C:\Users\reyna\Desktop\projet\contact-manager-console-app\Projet-CSHARP\obj\Debu
 C:\Users\reyna\Desktop\projet\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet_CSHARP.csproj.CoreCompileInputs.cache
 C:\Users\reyna\Desktop\projet\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet-CSHARP.exe
 C:\Users\reyna\Desktop\projet\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet-CSHARP.pdb
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet_CSHARP.csproj.AssemblyReference.cache
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet_CSHARP.csproj.CoreCompileInputs.cache
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet-CSHARP.exe
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\obj\Debug\Projet-CSHARP.pdb
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\bin\Debug\Projet-CSHARP.exe.config
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\bin\Debug\Projet-CSHARP.exe
+C:\Users\reyna\Source\Repos\contact-manager-console-app\Projet-CSHARP\bin\Debug\Projet-CSHARP.pdb

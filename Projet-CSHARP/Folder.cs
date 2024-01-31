@@ -4,18 +4,51 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace Projet_CSHARP
+namespace ContactManagerApp
 {
+    /// <summary>
+    /// Represents a folder in the contact manager, capable of containing other folders and contacts.
+    /// This class supports custom XML serialization and deserialization.
+    /// </summary>
     [Serializable]
     public class Folder : IXmlSerializable
     {
+        /// <summary>
+        /// Gets or sets the name of the folder.
+        /// </summary>
         public string           Name             { get; set; }
+
+        /// <summary>
+        /// Gets or sets the creation date of the folder.
+        /// </summary>
         public DateTime         CreationDate     { get; set; }
+
+        /// <summary>
+        /// Gets or sets the date of the last modification of the folder.
+        /// </summary>
         public DateTime         ModificationDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of subfolders contained within this folder.
+        /// </summary>
         public List<Folder>     SubFolders       { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of contacts contained within this folder.
+        /// </summary>
         public List<Contact>    Contacts         { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the Folder class.
+        /// </summary>
         public Folder() { }
+
+        /// <summary>
+        /// This method is reserved and should not be used. When implementing the IXmlSerializable interface,
+        /// you should return null (Nothing in Visual Basic) from this method, and instead, if specifying a custom schema is required,
+        /// apply the <see cref="XmlSchemaProviderAttribute"/> to the class.
+        /// </summary>
+        /// <returns>null</returns>
         public Folder(string name)
         {
             Name = name;
@@ -25,11 +58,21 @@ namespace Projet_CSHARP
             Contacts = new List<Contact>();
         }
 
+        /// <summary>
+        /// This method is reserved and should not be used. When implementing the IXmlSerializable interface,
+        /// you should return null (Nothing in Visual Basic) from this method, and instead, if specifying a custom schema is required,
+        /// apply the <see cref="XmlSchemaProviderAttribute"/> to the class.
+        /// </summary>
+        /// <returns>null</returns>
         public XmlSchema GetSchema()
         {
             return null;
         }
 
+        /// <summary>
+        /// Generates an object from its XML representation.
+        /// </summary>
+        /// <param name="reader">The <see cref="XmlReader"/> stream from which the object is deserialized.</param>
         public void ReadXml(XmlReader reader)
         {
             reader.ReadStartElement(); 
@@ -85,7 +128,10 @@ namespace Projet_CSHARP
             reader.ReadEndElement(); 
         }
 
-
+        /// <summary>
+        /// Converts an object into its XML representation.
+        /// </summary>
+        /// <param name="writer">The <see cref="XmlWriter"/> stream to which the object is serialized.</param>
         public void WriteXml(XmlWriter writer)
         {
             writer.WriteElementString("Name", Name);
@@ -93,32 +139,37 @@ namespace Projet_CSHARP
             writer.WriteElementString("ModificationDate", ModificationDate.ToString());
 
             // Write SubFolders
-
-            if (SubFolders.Count != 0)
+            if (null != SubFolders)
             {
-                writer.WriteStartElement("SubFolders");
-                foreach (var subFolder in SubFolders)
+                if (SubFolders.Count != 0)
                 {
-                    writer.WriteStartElement("Folder");
-                    subFolder.WriteXml(writer);
-                    writer.WriteEndElement();
+                    writer.WriteStartElement("SubFolders");
+                    foreach (var subFolder in SubFolders)
+                    {
+                        writer.WriteStartElement("Folder");
+                        subFolder.WriteXml(writer);
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement(); // </SubFolders>
                 }
-                writer.WriteEndElement(); // </SubFolders>
             }
 
             // Write Contacts
-  
-           if (Contacts.Count != 0)
+            if (null != Contacts)
             {
-                writer.WriteStartElement("Contacts");
-                foreach (var contact in Contacts)
+                if (Contacts.Count != 0)
                 {
-                    writer.WriteStartElement("Contact");
-                    contact.WriteXml(writer);
-                    writer.WriteEndElement();
+                    writer.WriteStartElement("Contacts");
+                    foreach (var contact in Contacts)
+                    {
+                        writer.WriteStartElement("Contact");
+                        contact.WriteXml(writer);
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement(); // </Contacts>
                 }
-                writer.WriteEndElement(); // </Contacts>
             }
+
         }
     }
 }

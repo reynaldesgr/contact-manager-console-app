@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Projet_CSHARP
+// Cyptography
+using System.Security.Cryptography;
+using System.Security.Principal;
+using System.Text;
+
+namespace ContactManagerApp
 {
+    /// <summary>
+    /// Manages the operations for contact and folder data within the application.
+    /// This includes creation, serialization, and deserialization of contact and folder information.
+    /// </summary>
     class ContactManager
     {
         private Folder            root;
@@ -11,13 +20,25 @@ namespace Projet_CSHARP
         private DataEntityFactory entityFactory;
         private DataSerializer    serializer;
 
+        private string            encryptionKey;
+        private string            decryptionKey;
+
+        /// <summary>
+        /// Initializes a new instance of the ContactManagerApp class. Sets up the factory, serializer,
+        /// and loads existing data if available.
+        /// </summary>
         public ContactManager()
         {
             entityFactory = new DataEntityFactory();
             serializer    = new DataSerializer();
+            encryptionKey = GetEncryptionKey();
             LoadData(); 
         }
 
+        /// <summary>
+        /// Creates a new folder with the given name and adds it to the current folder's subfolders.
+        /// </summary>
+        /// <param name="name">The name of the new folder.</param>
         public void CreateNewFolder(string name)
         {
             // Ensure current.SubFolders is not null
@@ -31,6 +52,14 @@ namespace Projet_CSHARP
             Console.WriteLine($"New folder '{name}' created in '{current.Name}'");
         }
 
+        /// <summary>
+        /// Creates a new contact with the given details and adds it to the current folder's contacts.
+        /// </summary>
+        /// <param name="lastName">The last name of the contact.</param>
+        /// <param name="firstName">The first name of the contact.</param>
+        /// <param name="email">The email address of the contact.</param>
+        /// <param name="company">The company name associated with the contact.</param>
+        /// <param name="link">The type of link or relationship of the contact.</param>
         public void CreateNewContact(string lastName, string firstName, string email, string company, TLink link)
         {
             if (current.Contacts == null)
@@ -43,7 +72,10 @@ namespace Projet_CSHARP
             Console.WriteLine($"New contact '{firstName} {lastName}' created in '{current.Name}'.");
         }
 
-
+        /// <summary>
+        /// Selects the current working folder based on the provided folder name.
+        /// </summary>
+        /// <param name="folderName">The name of the folder to set as current.</param>
         public void SelectCurrentFolder(string folderName)
         {
             Folder selected = FindFolderByName(root, folderName);
@@ -63,14 +95,14 @@ namespace Projet_CSHARP
             DisplayStructure(root, 0);
         }
 
+        /// <summary>
+        /// Saves the current contact and folder data to an XML file, encrypting the content with the set encryption key.
+        /// </summary>
         public void SaveData()
         {
             string fileName = "contactsData.xml";
-
-            // Get the full path of the file
             string fullPath = Path.GetFullPath(fileName);
 
-            // Check if the file exists
             if (!File.Exists(fileName))
             {
                 using (FileStream fs = File.Create(fileName))
@@ -78,16 +110,38 @@ namespace Projet_CSHARP
                     fs.Close();
                 }
             }
-            serializer.SerializeToFile(root, fileName);
+            if (string.IsNullOrEmpty(encryptionKey))
+            {
+                encryptionKey = GetEncryptionKey(); 
+            }
+
+            serializer.SerializeToFile(root, fileName, encryptionKey);
             Console.WriteLine("Data saved successfully in " + fullPath + ".");
+        }
+
+        private string GetEncryptionKey()
+        {
+            string usid = WindowsIdentity.GetCurrent().User.Value;
+
+            using (SHA256 sha256 = SHA256.Create()) 
+            {
+                byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(usid));
+                return Convert.ToBase64String(hash);
+            }
         }
 
         public void LoadData()
         {
             string fileName = "contactsData.xml";
+
             if (File.Exists(fileName))
             {
-                root = serializer.DeserializeFromFile<Folder>(fileName);
+                if (string.IsNullOrEmpty(decryptionKey))
+                {
+                    decryptionKey = GetEncryptionKey();
+                }
+
+                root = serializer.DeserializeFromFile<Folder>(fileName, decryptionKey);
                 current = root;
                 Console.WriteLine("Data loaded successfully.");
             }
@@ -106,6 +160,11 @@ namespace Projet_CSHARP
             Console.WriteLine("Data unloaded successfully.");
         }
 
+        /// <summary>
+        /// Displays the hierarchical structure of folders and contacts starting from a specified folder.
+        /// </summary>
+        /// <param name="folder">The starting folder to display the structure of.</param>
+        /// <param name="depth">The depth of indentation for displaying the structure.</param>
         public void DisplayStructure(Folder folder, int depth)
         {
             string indent = new string(' ', depth * 4);
@@ -116,7 +175,7 @@ namespace Projet_CSHARP
             {
                 foreach (var contact in folder.Contacts)
                 {
-                    Console.WriteLine($"{indent} | [C] - {contact.FirstName} {contact.LastName} ({contact.Email})");
+                    Console.WriteLine($"{indent} | [C] - {contact.FirstName} {contact.LastName} from {contact.Company} - {contact.Link} ({contact.Email})");
                 }
 
             }

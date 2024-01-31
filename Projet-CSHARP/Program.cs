@@ -1,15 +1,24 @@
 ﻿using System;
 
-namespace Projet_CSHARP
+namespace ContactManagerApp
 {
+    /// <summary>
+    /// The main entry point for the Contact Manager application.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// The main method that starts the application and presents a menu to the user for various operations.
+        /// </summary>
+        /// <param name="args">The command-line arguments.</param>
         static void Main(string[] args)
         {
             ContactManager contactManager = new ContactManager();
 
+            // Main loop to display menu and process user choices.
             while (true)
             {
+                // Display the menu options to the user.
                 Console.WriteLine("\nMenu:");
                 Console.WriteLine("1. Display structure");
                 Console.WriteLine("2. Create folder");
@@ -20,8 +29,10 @@ namespace Projet_CSHARP
                 Console.WriteLine("7. Exit");
                 Console.Write("Enter your choice: ");
 
+                // Read the user's choice.
                 string choice = Console.ReadLine();
 
+                // Process the choice via a switch statement.
                 switch (choice)
                 {
                     case "1":
@@ -35,9 +46,9 @@ namespace Projet_CSHARP
                         break;
 
                     case "3":
-                        Console.Write("Enter contact details:\nLast Name: ");
+                        Console.Write("Enter contact details:\nLast name: ");
                         string lastName = Console.ReadLine();
-                        Console.Write("First Name: ");
+                        Console.Write("First name: ");
                         string firstName = Console.ReadLine();
                         Console.Write("Email: ");
                         string email = Console.ReadLine(); 
