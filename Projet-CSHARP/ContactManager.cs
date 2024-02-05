@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+
 
 // Cyptography
 using System.Security.Cryptography;
@@ -41,10 +43,15 @@ namespace ContactManagerApp
         /// <param name="name">The name of the new folder.</param>
         public void CreateNewFolder(string name)
         {
-            // Ensure current.SubFolders is not null
             if (current.SubFolders == null)
             {
                 current.SubFolders = new List<Folder>();
+            }
+
+            if (current.SubFolders.Any(f => f.Name.Equals(name, StringComparison.OrdinalIgnoreCase)))
+            {
+                Console.WriteLine($"A folder named '{name}' already exists in '{current.Name}'.");
+                return; 
             }
 
             Folder newFolder = entityFactory.CreateFolder(name);
