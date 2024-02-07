@@ -91,7 +91,6 @@ namespace ContactManagerApp
                         break;
 
                     case "6":
-                        contactManager.UnloadData();
                         Console.Write("Are you sure to unload data ? [Y/N] ");
                         string answer = Console.ReadLine();
                         switch(answer)

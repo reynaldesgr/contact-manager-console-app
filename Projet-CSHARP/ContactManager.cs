@@ -165,6 +165,7 @@ namespace ContactManagerApp
             root = entityFactory.CreateFolder("root");
             current = root;
             Console.WriteLine("Data unloaded successfully.");
+            SaveData();
         }
 
         /// <summary>
@@ -176,7 +177,7 @@ namespace ContactManagerApp
         {
             string indent = new string(' ', depth * 4);
 
-            Console.WriteLine($"{indent}[D] - {folder.Name}");
+            Console.WriteLine($"{indent}[D] - {folder.Name} ({folder.CreationDate})");
 
             if (folder.Contacts != null)
             {
